@@ -1,0 +1,540 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"tekton.dev/v1alpha1","kind":"Task","metadata":{"annotations":{},"name":"read-task","namespace":"default"},"spec":{"inputs":{"resources":[{"name":"github-repo","type":"git"}]},"steps":[{"args":["-c","cd /workspace/github-repo \u0026\u0026 bazel run -- //:build_gen --src=gopos","--remote_cache=http://10.0.2.33:9090","\u0026\u0026 cat /workspace/github-repo/gopos/product/v1alpha1/BUILD.bazel"],"command":["/bin/bash"],"image":"launcher.gcr.io/google/bazel","name":"catreadme","resources":{"limits":{"cpu":"500m","memory":"1Gi"},"requests":{"cpu":"200m","memory":"1Gi"}}}]}}
+    pipeline.tekton.dev/release: devel
+  creationTimestamp: "2020-03-24T19:20:39Z"
+  labels:
+    app.kubernetes.io/managed-by: tekton-pipelines
+    tekton.dev/task: read-task
+    tekton.dev/taskRun: pipeline-test-auth
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:pipeline.tekton.dev/release: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:tekton.dev/task: {}
+          f:tekton.dev/taskRun: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"18cef56f-d2b7-4c28-a730-8a1f28aee650"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"step-catreadme"}:
+            .: {}
+            f:args: {}
+            f:command: {}
+            f:env:
+              .: {}
+              k:{"name":"HOME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources:
+              .: {}
+              f:limits:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:ephemeral-storage: {}
+                f:memory: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/tekton/home"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/results"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/tools"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/workspace"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+            f:workingDir: {}
+          k:{"name":"step-git-source-github-repo-464tw"}:
+            .: {}
+            f:args: {}
+            f:command: {}
+            f:env:
+              .: {}
+              k:{"name":"HOME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"TEKTON_RESOURCE_NAME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources:
+              .: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:ephemeral-storage: {}
+                f:memory: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/tekton/downward"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/home"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/results"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/tools"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/workspace"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+            f:workingDir: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:initContainers:
+          .: {}
+          k:{"name":"credential-initializer"}:
+            .: {}
+            f:args: {}
+            f:command: {}
+            f:env:
+              .: {}
+              k:{"name":"HOME"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/tekton/creds-secrets/basic-user-pass"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/home"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/tekton/results"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/workspace"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+          k:{"name":"place-tools"}:
+            .: {}
+            f:command: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/tekton/tools"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:restartPolicy: {}
+        f:runtimeClassName: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+        f:volumes:
+          .: {}
+          k:{"name":"tekton-internal-downward"}:
+            .: {}
+            f:downwardAPI:
+              .: {}
+              f:defaultMode: {}
+              f:items: {}
+            f:name: {}
+          k:{"name":"tekton-internal-home"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+          k:{"name":"tekton-internal-results"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+          k:{"name":"tekton-internal-secret-volume-basic-user-pass-898vw"}:
+            .: {}
+            f:name: {}
+            f:secret:
+              .: {}
+              f:defaultMode: {}
+              f:secretName: {}
+          k:{"name":"tekton-internal-tools"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+          k:{"name":"tekton-internal-workspace"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+    manager: controller
+    operation: Update
+    time: "2020-03-24T19:20:39Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:initContainerStatuses: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.88.0.8"}:
+            .: {}
+            f:ip: {}
+          k:{"ip":"1100:200::8"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-03-24T19:20:42Z"
+  name: pipeline-test-auth-pod-59n5m
+  namespace: default
+  ownerReferences:
+  - apiVersion: tekton.dev/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: TaskRun
+    name: pipeline-test-auth
+    uid: 18cef56f-d2b7-4c28-a730-8a1f28aee650
+  resourceVersion: "3727"
+  selfLink: /api/v1/namespaces/default/pods/pipeline-test-auth-pod-59n5m
+  uid: 6e33cad3-9882-46af-bab8-c7b6b44fb4e9
+spec:
+  containers:
+  - args:
+    - -wait_file
+    - /tekton/downward/ready
+    - -wait_file_content
+    - -post_file
+    - /tekton/tools/0
+    - -termination_path
+    - /tekton/termination
+    - -entrypoint
+    - /ko-app/git-init
+    - --
+    - -url
+    - https://github.com/gattytto/gopos
+    - -revision
+    - master
+    - -path
+    - /workspace/github-repo
+    command:
+    - /tekton/tools/entrypoint
+    env:
+    - name: HOME
+      value: /tekton/home
+    - name: TEKTON_RESOURCE_NAME
+      value: github-repo
+    image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init@sha256:599f634b71a5bd6cd5f83e0ec8f9ce56825640ff20f38a184a3c962df3024c6c
+    imagePullPolicy: IfNotPresent
+    name: step-git-source-github-repo-464tw
+    resources:
+      requests:
+        cpu: "0"
+        ephemeral-storage: "0"
+        memory: "0"
+    terminationMessagePath: /tekton/termination
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /tekton/tools
+      name: tekton-internal-tools
+    - mountPath: /tekton/downward
+      name: tekton-internal-downward
+    - mountPath: /workspace
+      name: tekton-internal-workspace
+    - mountPath: /tekton/home
+      name: tekton-internal-home
+    - mountPath: /tekton/results
+      name: tekton-internal-results
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: build-bot-token-p9cz4
+      readOnly: true
+    workingDir: /workspace
+  - args:
+    - -wait_file
+    - /tekton/tools/0
+    - -post_file
+    - /tekton/tools/1
+    - -termination_path
+    - /tekton/termination
+    - -entrypoint
+    - /bin/bash
+    - --
+    - -c
+    - cd /workspace/github-repo && bazel run -- //:build_gen --src=gopos
+    - --remote_cache=http://10.0.2.33:9090
+    - '&& cat /workspace/github-repo/gopos/product/v1alpha1/BUILD.bazel'
+    command:
+    - /tekton/tools/entrypoint
+    env:
+    - name: HOME
+      value: /tekton/home
+    image: launcher.gcr.io/google/bazel
+    imagePullPolicy: Always
+    name: step-catreadme
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        ephemeral-storage: "0"
+        memory: 1Gi
+    terminationMessagePath: /tekton/termination
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /tekton/tools
+      name: tekton-internal-tools
+    - mountPath: /workspace
+      name: tekton-internal-workspace
+    - mountPath: /tekton/home
+      name: tekton-internal-home
+    - mountPath: /tekton/results
+      name: tekton-internal-results
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: build-bot-token-p9cz4
+      readOnly: true
+    workingDir: /workspace
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  initContainers:
+  - args:
+    - -basic-git=basic-user-pass=https://github.com/gattytto/gopos
+    command:
+    - /ko-app/creds-init
+    env:
+    - name: HOME
+      value: /tekton/home
+    image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init@sha256:af3db1677ca1bfd3b3927b98b7cd11fd0226c7f8646d805a868148bf266d4d01
+    imagePullPolicy: IfNotPresent
+    name: credential-initializer
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /workspace
+      name: tekton-internal-workspace
+    - mountPath: /tekton/home
+      name: tekton-internal-home
+    - mountPath: /tekton/results
+      name: tekton-internal-results
+    - mountPath: /tekton/creds-secrets/basic-user-pass
+      name: tekton-internal-secret-volume-basic-user-pass-898vw
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: build-bot-token-p9cz4
+      readOnly: true
+  - command:
+    - cp
+    - /ko-app/entrypoint
+    - /tekton/tools/entrypoint
+    image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint@sha256:58bde03269c74f62d8e03ac10b5d4c42c3db7de741eb10521464622dee4625c3
+    imagePullPolicy: IfNotPresent
+    name: place-tools
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /tekton/tools
+      name: tekton-internal-tools
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: build-bot-token-p9cz4
+      readOnly: true
+  nodeName: hfocal
+  priority: 0
+  restartPolicy: Never
+  runtimeClassName: runscw
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: build-bot
+  serviceAccountName: build-bot
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir: {}
+    name: tekton-internal-workspace
+  - emptyDir: {}
+    name: tekton-internal-home
+  - emptyDir: {}
+    name: tekton-internal-results
+  - name: tekton-internal-secret-volume-basic-user-pass-898vw
+    secret:
+      defaultMode: 420
+      secretName: basic-user-pass
+  - emptyDir: {}
+    name: tekton-internal-tools
+  - downwardAPI:
+      defaultMode: 420
+      items:
+      - fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.annotations['tekton.dev/ready']
+        path: ready
+    name: tekton-internal-downward
+  - name: build-bot-token-p9cz4
+    secret:
+      defaultMode: 420
+      secretName: build-bot-token-p9cz4
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-03-24T19:20:39Z"
+    message: 'containers with incomplete status: [credential-initializer place-tools]'
+    reason: ContainersNotInitialized
+    status: "False"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-03-24T19:20:39Z"
+    message: 'containers with unready status: [step-git-source-github-repo-464tw step-catreadme]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-03-24T19:20:39Z"
+    message: 'containers with unready status: [step-git-source-github-repo-464tw step-catreadme]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-03-24T19:20:39Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - image: launcher.gcr.io/google/bazel
+    imageID: ""
+    lastState: {}
+    name: step-catreadme
+    ready: false
+    restartCount: 0
+    started: false
+    state:
+      waiting:
+        reason: PodInitializing
+  - image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init@sha256:599f634b71a5bd6cd5f83e0ec8f9ce56825640ff20f38a184a3c962df3024c6c
+    imageID: ""
+    lastState: {}
+    name: step-git-source-github-repo-464tw
+    ready: false
+    restartCount: 0
+    started: false
+    state:
+      waiting:
+        reason: PodInitializing
+  hostIP: 10.0.2.33
+  initContainerStatuses:
+  - containerID: cri-o://30b6f9f5542663780bf4b876882cfad783bff6d0b90f288abc0779ac4bbaf4ef
+    image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init@sha256:af3db1677ca1bfd3b3927b98b7cd11fd0226c7f8646d805a868148bf266d4d01
+    imageID: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/creds-init@sha256:af3db1677ca1bfd3b3927b98b7cd11fd0226c7f8646d805a868148bf266d4d01
+    lastState: {}
+    name: credential-initializer
+    ready: false
+    restartCount: 0
+    state:
+      running:
+        startedAt: "2020-03-24T19:20:41Z"
+  - image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint@sha256:58bde03269c74f62d8e03ac10b5d4c42c3db7de741eb10521464622dee4625c3
+    imageID: ""
+    lastState: {}
+    name: place-tools
+    ready: false
+    restartCount: 0
+    state:
+      waiting:
+        reason: PodInitializing
+  phase: Pending
+  podIP: 10.88.0.8
+  podIPs:
+  - ip: 10.88.0.8
+  - ip: 1100:200::8
+  qosClass: Burstable
+  startTime: "2020-03-24T19:20:39Z"

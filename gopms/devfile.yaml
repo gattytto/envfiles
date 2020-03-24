@@ -1,0 +1,150 @@
+---
+apiVersion: 1.0.0
+metadata:
+  name: gopms
+projects:
+  - name: gopms-backend
+    source:
+      location: 'git@github.com:gattytto/gopms-backend.git'
+      type: git
+    clonePath: src/gopms-backend/
+  - name: gopms-frontend
+    source:
+      location: 'git@github.com:gattytto/gopms-frontend.git'
+      type: git
+    clonePath: src/gopms-frontend/
+  - name: gopms-cli
+    source:
+      location: 'git@github.com:gattytto/gopms-cli.git'
+      type: git
+    clonePath: src/gopms-cli/
+components:
+  - type: dockerimage
+    alias: mongo
+    image: centos/mongodb-34-centos7
+    memoryLimit: 512Mi
+    env:
+      - name: MONGODB_USER
+        value: user
+      - name: MONGODB_PASSWORD
+        value: password
+      - name: MONGODB_DATABASE
+        value: guestbook
+      - name: MONGODB_ADMIN_PASSWORD
+        value: password
+    volumes:
+      - name: mongo-storage
+        containerPath: /var/lib/mongodb/data
+    endpoints:
+      - name: mongodb-34-centos7
+        port: 27017
+        attributes:
+          discoverable: 'true'
+          public: 'false'
+  - id: ms-vscode/go/latest
+    memoryLimit: 512Mi
+    type: chePlugin
+    alias: go-plugin
+  - mountSources: true
+    endpoints:
+      - name: nodejs
+        port: 4200
+    memoryLimit: 1Gi
+    type: dockerimage
+    image: 'quay.io/eclipse/che-nodejs10-community:nightly'
+    alias: nodejs
+  - mountSources: true
+    endpoints:
+      - name: 8080/tcp
+        port: 8080
+    memoryLimit: 512Mi
+    type: dockerimage
+    image: 'quay.io/eclipse/che-golang-1.10:nightly'
+    alias: go-cli
+    env:
+      - value: '/go:$(CHE_PROJECTS_ROOT)'
+        name: GOPATH
+      - value: /tmp/.cache
+        name: GOCACHE
+  - id: ms-kubernetes-tools/vscode-kubernetes-tools/latest
+    type: chePlugin
+  - id: che-incubator/typescript/latest
+    type: chePlugin
+  - id: eclipse/che-theia/next
+    type: cheEditor
+apiVersion: 1.0.0
+commands:
+  - name: yarn install frontend
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-frontend'
+        type: exec
+        command: yarn install
+        component: nodejs
+  - name: build frontend
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-frontend'
+        type: exec
+        command: yarn run build
+        component: nodejs
+  - name: lint frontend
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-frontend'
+        type: exec
+        command: yarn run lint
+        component: nodejs
+  - name: run backend
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-backend'
+        type: exec
+        command: go get -d && go run main.go
+        component: go-cli
+  - name: stop backend
+    actions:
+      - type: exec
+        command: kill $(pidof go)
+        component: go-cli
+  - name: test backend
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-cli'
+        type: exec
+        command: go test
+        component: go-cli
+  - name: run cli
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-cli'
+        type: exec
+        command: go get -d && go run main.go
+        component: go-cli
+  - name: stop cli
+    actions:
+      - type: exec
+        command: kill $(pidof go)
+        component: go-cli
+  - name: test cli
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/src/github.com/gattytto/gopms-cli'
+        type: exec
+        command: go test
+        component: go-cli
+  - name: run current file
+    actions:
+      - workdir: '${fileDirname}'
+        type: exec
+        command: 'go get -d && go run ${file}'
+        component: go-cli
+  - name: Debug current file
+    actions:
+      - referenceContent: |
+          {
+            "version": "0.2.0",
+            "configurations": [
+              {
+                "name": "Debug current file",
+                "type": "go",
+                "request": "launch",
+                "mode": "auto",
+                "program": "${fileDirname}",
+              },
+            ]
+          }
+        type: vscode-launch

@@ -1,0 +1,17 @@
+
+[Unit]
+Description=che-devfile-registry
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker kill che_devfile_registry
+ExecStartPre=-/usr/bin/docker rm che_devfile_registry
+ExecStartPre=-/usr/bin/docker pull quay.io/gattytto/che-devfile/registry
+ExecStartPre=-/usr/bin/docker pull quay.io/gattytto/che-devfile-registry
+ExecStart=/usr/bin/docker run --name che_devfile_registry -e CHE_DEVFILE_REGISTRY_URL='http://10.0.1.111:8080' -p 8080:8080 quay.io/gattytto/che-devfile-registry
+ExecStop=/usr/bin/docker stop che_devfile_registry
+
+[Install]
+WantedBy=local.target

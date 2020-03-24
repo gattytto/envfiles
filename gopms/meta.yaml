@@ -1,0 +1,6 @@
+---
+displayName: gopms
+description: asdasd
+tags: ["NodeJS", "Angular", "Alpine"]
+icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
+globalMemoryLimit: 4096Mi
