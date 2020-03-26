@@ -1,0 +1,56 @@
+ 
+09:06:46.646236063 \#\: conmon --syslog -c 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727 -n k8s_POD_pipeline-test-auth-pod-44nkp_default_c934a788-69d5-40e1-96b0-c8f5993fbb1e_0 -u 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727 -r /usr/local/bin/runscw -b /var/run/containers/storage/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata --persist-dir /data/podman/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata -p /var/run/containers/storage/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata/pidfile -P /var/run/containers/storage/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata/conmon-pidfile -l /var/log/pods/default_pipeline-test-auth-pod-44nkp_c934a788-69d5-40e1-96b0-c8f5993fbb1e/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727.log --exit-dir /var/run/crio/exits --socket-dir-path /var/run/crio --log-level info --runtime-arg --root=/run/runc
+09:06:46.649569347 \#\: runsc --root=/run/runc create --bundle /var/run/containers/storage/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata --pid-file /var/run/containers/storage/overlay-containers/70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727/userdata/pidfile 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727
+09:06:46.695054212 \#\: runsc --root /run/runc start 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727
+09:06:46.771873433 \#\: runsc --root /run/runc state 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727
+09:06:46.811591195 \#\: conmon --syslog -c 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 -n k8s_credential-initializer_pipeline-test-auth-pod-44nkp_default_c934a788-69d5-40e1-96b0-c8f5993fbb1e_0 -u 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 -r /usr/local/bin/runscw -b /var/run/containers/storage/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata --persist-dir /data/podman/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata -p /var/run/containers/storage/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata/pidfile -P /var/run/containers/storage/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata/conmon-pidfile -l /var/log/pods/default_pipeline-test-auth-pod-44nkp_c934a788-69d5-40e1-96b0-c8f5993fbb1e/credential-initializer/0.log --exit-dir /var/run/crio/exits --socket-dir-path /var/run/crio --log-level info --runtime-arg --root=/run/runc
+09:06:46.814968778 \#\: runsc --root=/run/runc create --bundle /var/run/containers/storage/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata --pid-file /var/run/containers/storage/overlay-containers/2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5/userdata/pidfile 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:06:46.823423408 \#\: runsc --root /run/runc state 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:06:46.830081835 \#\: runsc --root /run/runc state 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:06:46.836630229 \#\: runsc --root /run/runc state 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:06:46.844872198 \#\: runsc --root /run/runc start 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:06:46.977668506 \#\: runsc --root /run/runc state 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+##########################TEARDOWN##########################
+
+09:07:11.951933812 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:12.033285124 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:13.951397594 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:13.978731897 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:15.951900517 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:15.979771588 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:17.951358648 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:17.979274321 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:19.951913345 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:19.979581917 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:21.951740222 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:21.978788099 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:23.951362906 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:23.979192115 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:25.951774673 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:25.978814041 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:27.951390625 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:27.978294533 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:29.951807584 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:29.979842959 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:31.951753217 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:31.978513597 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:33.953426568 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:33.979968431 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:35.951309017 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:35.982797814 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:37.951835936 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:37.979118839 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:39.951525436 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:39.983449612 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:41.953602683 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:41.983070353 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:43.951922508 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:43.978811989 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:45.951962887 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:45.979541421 \#\: runsc --root /run/runc kill 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5 TERM
+09:07:47.828206138 \#\: runsc --root /run/runc state 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:07:47.953174298 \#\: runsc --root /run/runc kill 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727 TERM
+09:07:48.060535389 \#\: runsc --root /run/runc state 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727
+09:07:48.061186226 \#\: runsc --root /run/runc delete --force 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:07:49.062623905 \#\: runsc --root /run/runc delete --force 2056e9eb2bca6b020ead5d44feaa6b477a9d458d321ea39194346b52de7318a5
+09:08:41.830523617 \#\: runsc --root /run/runc delete --force 70ebc591165715cd27f18c7c2affb345ff2450242e735318723d69be5abea727
